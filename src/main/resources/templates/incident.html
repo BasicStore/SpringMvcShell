@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shell App - Details Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .error {
+			color: red;
+			font-size: 15px;        
+        }
+    </style>
+</head>
+<body>
+    <p><h1><b>Shell App</b></h1></p>
+	
+	<h2>Details of action:</h2>
+    
+    
+    <p th:text="'First Name ZZZZ: ' + ${incident.reporter.firstName}" />
+    <p th:text="'Last Name ZZZZ: ' + ${incident.reporter.lastName}" />
+    
+    
+    <form action="#" th:action="@{/incident}" th:object="${incident}" method="post">
+    	<p>Reporter First Name: <input type="text" th:field="*{reporter.firstName}" /> 
+        
+    	<div>
+           <label th:for="severity">Severity: </label>
+           <select th:field="*{severity}">
+               <option th:each="sev : ${severityList}"
+                       th:text="${sev.lit}"
+                       th:value="${sev}"></option>
+	       </select>
+        </div>
+    	
+    	<div>
+           <label th:for="type">Job Type: </label>
+           <select th:field="*{type}">
+               <option th:each="incType : ${incTypeList}"
+                       th:text="${incType.lit}"
+                       th:value="${incType}"></option>
+	       </select>
+        </div>
+    	
+    	
+    	
+    	
+    	<!-- 2) MAKE THE STATEMENT LIST HERE>............... <p>Statement: <input type="text" th:field="*{statement}" /></p> -->
+    	<!-- QUESTION IS - Can this be done from within the object -->
+    	<!-- <table>
+    	    <tr th:each="stmt : ${statementList}">
+    			<td th:text="{stmt.author.firstName}"></td>
+    			<td th:text="{stmt.comments}"></td>
+    			<td th:text="{stmt.summary}"></td>
+    		</tr>
+    	</table>  -->
+    	
+    	
+    	
+    	<p>Start Date: <input type="text" th:field="*{startDate}" /></p>
+    	<p>End Date: <input type="text" th:field="*{endDate}" /></p>
+    	
+    	
+    	
+    	
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+USEFUL LINKS:
+
+Spring MVC
+https://start.spring.io/  ==> Spring Boot starter
+https://spring.io/guides/gs/handling-form-submission/  ==> MVC basics
+https://www.baeldung.com/spring-mvc-model-model-map-model-view ==> Model, ModelMap and ModelAndView
+https://spring.io/guides/gs/testing-web/ ==> controller testing with mockito
+https://memorynotfound.com/unit-test-spring-mvc-rest-service-junit-mockito/ ==> further mockito focussed controller testing
+https://stackoverflow.com/questions/18791645/how-to-use-session-attributes-in-spring-mvc ==> session handling
+
+---------------------------------------------------------------------------------------
+RUNNING THE APP WITH GRADLE
+
+BUILD: ./gradlew build
+RUN:   java -jar build/libs/incident-report-app-0.1.0.jar   [ie gradle file project name].jar
+
+OR BUILD AND RUN: ./gradlew bootRun
+---------------------------------------------------------------------------------------
+RUNNING THE APP WITH MVN
+
+BUILD: ./mvnw clean package
+RUN:   java -jar target/gs-handling-form-submission-0.1.0.jar
+        [This jar name is set with parameters in the maven script,
+        to be equal to the parent directory]
+
+        java -jar target/PostInitialProj-0.0.1-SNAPSHOT.jar
+
+OR BUILD AND RUN: ./mvnw spring-boot:run
+---------------------------------------------------------------------------------------
+
+REMOVE FOR TRANSPORTATION:
+
+contents of target
+mvnw
+mvnw.cmd
+HELP.md
+

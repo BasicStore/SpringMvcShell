@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>poc for login page - although this would normally be outside the container</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Result</h1>
+    <p th:text="'content: ' + ${login.firstName}" />
+    <p th:text="'content: ' + ${login.lastName}" />
+    <a href="/login">Submit a new get request</a>
+</body>
+
+
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shell App - Submission Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .error {
+			color: red;
+			font-size: 15px;        
+        }
+    </style>
+</head>
+<body>
+    <p><h1><b>Shell app</b></h1></p>
+	
+	<h2>Action submitted:</h2>
+    
+    <p th:text="'First Name: ' + ${incident.reporter.firstName}" />
+    <p th:text="'Last Name: ' + ${incident.reporter.lastName}" />
+    
+    
+    <p th:text="'thymeFirst Name: ' + *{incident.reporter.firstName}" />
+    <p th:text="'thymeLast Name: ' + *{incident.reporter.lastName}" />
+    <p th:text="'Severity: ' + ${incident.severity}" />
+    <p th:text="'Severity: ' + ${incident.type}" /> 
+    <p th:text="'Start Date: ' + ${incident.startDate}" />
+    <p th:text="'End Date: ' + ${incident.endDate}" />
+    
+    
+    <!-- <p>Type: <input type="text" th:field="*{type}" />  -->
+    
+    <p th:text="'Date Submitted: ' + ${incident.dateSubmitted}" />
+    
+    <a href="/incident">Create a new incident</a>
+    
+    
+	<br />    
+    <p>Now test reading a session variable in EL:</p>
+    <p th:text="${session.mockInc.reporter.firstName}" th:unless="${session == null}"> . </p>
+    <p th:text="${session.mockInc.reporter.lastName}" th:unless="${session == null}"> . </p>
+    <p th:text="${session.mockInc.reporter.address}" th:unless="${session == null}"> . </p>
+    
+    
+</body>
+</html>
+
+

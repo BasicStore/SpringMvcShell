@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shell App - Statement Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        .error {
+			color: red;
+			font-size: 15px;        
+        }
+    </style>
+</head>
+<body>
+    <p><h1><b>Shell App</b></h1></p>
+    
+    <p th:text="'Test model app property: ' + ${testModelMap}" />
+    
+	<h2>Please enter your description (ie of one person) of the action:</h2>
+    <form action="#" th:action="@{/statement}" th:object="${statement}" method="post">
+        
+        <p>Statement Maker's First Name: <input type="text" th:field="*{author.firstName}" />
+		<!-- Apply block for each person here    -->
+        
+        <p>Summary:</p> 
+        <textarea rows="4" cols="50" th:field="*{summary}">Summary</textarea>        
+        
+        <p>Notes:</p>
+        <textarea rows="10" cols="50" th:field="*{comments}">Report</textarea>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
+
+
