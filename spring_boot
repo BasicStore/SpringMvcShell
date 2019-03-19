@@ -1,0 +1,177 @@
+
+SPRING BOOT
+
+Main link:
+http://spring.io/projects/spring-boot#learn
+
+Infrastructure for configuring Spring platform out of the box
+with default settings and default 3rd party libraries - by 
+looking at user defined opinions, or lack of....
+no need for XML config
+
+--> can be started by using java -jar or more traditional war 
+    deployments
+
+++> get started on a new project quickly, no need for code 
+    generation or XML configuration
+++> can adapt to more user specifications as they are introduced
+++> all this and can produce production grade systems
+
+
+Annotations:
+- @RequestMapping("/")
+  Routes any path to the annotated method
+
+- @RestController
+  Tells Spring to render the resulting string directly back to 
+  the caller
+
+- @EnableAutoConfiguration
+  Tells Spring BOOT to guess how to configure spring, based on 
+  the included dependencies.
+  For example, Tomcat and SpringMVC may be added 
+  (via the spring-boot-starter-web repository).
+  This is spring auto-configuration.
+
+SpringApplication.run() method:
++ bootstraps the application
++ starts spring
++ starts tomcat using the auto-configuration (if necessary)
+ 
+@Configuration / @SpringBootConfiguration
+Typically define just 1 class with @Configuration, and best to 
+put this in the main class
+
+@EnableAutoConfiguration
+Annotations to be added to one of the main configuration classes, 
+tells spring boot to opt in to auto configuration mode.
+Basically add just 1 such configuration once.
+
+@ComponentScan
+Scans for benas and components from within the package 
+(usually the root directory).
+ 
+Application components 
+- @Component  --> generic annotation for any spring-managed 
+                  component
+- @Service    --> annotated classes in service layer / BL
+- @Repository --> data access object  
+- @Controller --> marks a class as a MVC controller
+- @RestController --> @Controller + @ResponseBody 
+
+@SpringBootApplication = @EnableAutoConfiguration + 
+                                @ComponentScan + @Configuration
+
+*** Restart vs Reload ***
+During development, when you use 'spring-boot-devtools' 
+                         and make a change to the classpath,
+the application restarts. 
+- base classloaded    --> classes that do not change (eg 3rd party jars)
+- restart classloader --> classes in development will change. 
+                          The restart classloader is
+                          thrown away and recreated.
+This means restarting is fast.
+
+User's beans:      specified functionality
+Auto-create beans: beans created where no explicit instructions 
+                   provided by the user, these are based on opinions 
+
+
+*** VIDEOS ***
+
+Introduction:
+https://content.pivotal.io/webinars/
+                  mar-13-introducing-spring-boot-2-0-webinar
+
+https://content.pivotal.io/springone-platform-2017/
+             from-zero-to-hero-with-spring-boot-brian-clozel
+
+
+Spring Getting started guides:
+https://spring.io/guides
+
+
+CALLER:
+@SpringBootApplication (this should handle @EnableAutoConfiguration, @ComponentScan + @Configuration)
+
+
+SUBJECT:
+@Service
+@Autowired
+
+**********************************************************8
+JavaBootWorkspace2
+
+- App11 - my shell
+- Demo  - standard shell
+- initial - spring boot app example with units
+            https://spring.io/guides/gs/spring-boot/
+
+**********************************************************8
+TAG DRIVEN DEPENDENCY INJECTION WITH SPRING BOOT (no XML config)
+https://spring.io/guides/gs/spring-boot/
+
+Works fine with:
+- spring-boot-starter-web
+- spring-boot-devtools
+- spring-boot-maven-plugin
+
+However, the injection must be within, or recursively inside
+the package which contains the class which declares
+@SpringBootApplication 
+   [OR @EnableAutoConfiguration + @ComponentScan + @Configuration]
+
+Tags required:
+- BEANS: @SpringBootApplication (for all 3)
+- CALLER: @Service, @RestController etc
+- COMPONENT: @Component, (@Service)
+
+Tests:
+--> use the dependency below (not the one given in the link)
+    https://spring.io/guides/gs/spring-boot/
+--> as above,  can be run from parallel location or lower,
+    even from test hierarchy.
+        dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<version>2.0.1.RELEASE</version>
+	</dependency>
+--> correctly injects from main as expected
+
+*****************************************************************
+RUN SPRING BOOT
+
+Add starter parent and specific starter(s) as dependencies in pom:
+--> mvn dependency:tree   --> view dependencies
+--> mvn spring-boot:run   --> run app
+    OR
+    mvn package && java -jar target/gs-spring-boot-0.1.0.jar
+
+OR RUN FROM ECLIPSE:
+- select "Run As" -> "Maven Build..."
+- In the goals, enter:   spring-boot:run 
+- click Run button.
+
+*****************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

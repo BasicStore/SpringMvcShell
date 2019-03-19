@@ -1,0 +1,203 @@
+
+MVC GOALS
+
+==> DONE locate best resources for annotation based Spring MVC
+         https://spring.io/guides/gs/handling-form-submission/
+         https://www.baeldung.com/
+                        spring-mvc-model-model-map-model-view
+         https://spring.io/guides/gs/
+                             handling-form-submission/#initial
+         https://spring.io/guides/gs/serving-web-content/
+         https://www.tutorialspoint.com/springmvc/
+                             springmvc_textarea.htm
+==> DONE standalone new project from ground up with form and 
+         gets working with annotations only + Spring BOOT
+
+==> DONE notice required link does not nd project name
+         http://localhost:8080/greeting
+         http://localhost:8080/login
+==> DONE add packaging poc and impl
+==> DONE change the jar file name, and run that instead. Verify name is not important
+==> DONE server side validation poc
+==> DONE research needed, to progress from 1 page to another without an intermediary get request
+         Research Model, ModelMap and ModelAndView
+         Removed ambiguous naming between direction, view and object
+         Typo on property and getter
+==> DONE form components and clarity on Model v ModelAndView scope
+==> DONE implement basic pages in a linear way with all form components
+    - DONE personal details page
+                  --> DONE what are the errors, the form values are there....
+    - DONE incident page
+    - DONE incident logged page 
+    - DONE statement page
+    - DONE submission page
+==> DONE verfify the distinction exists in form name between the object and direction / view
+==> DONE can the ModelAndView object be shared across each controller, or is it best to create and populate a new object each time
+         yes it can
+==> DONE change personal to Person! And give it an id
+==> DONE sort text area on statement
+==> DONE need much more clarity on scope....
+         eg. when supplied as a param, does ModelAndView object maintain all previous values from form?
+         Options are:
+         - Session variable
+         - Save to DB and treat ModelAndView separately
+==> DONE experiemnt with ModelMap and scope - DEFINELY ONLY REQUEST SCOPE! as for Model and ModelAndView
+         map.addAttribute("testModelMap", "model map property");
+         <p th:text="'Test model app property: ' + ${testModelMap}" />
+==> DONE be clear how to check for NULL data in controllers
+         @NotNull is not working, but login.getFirstName().isEmpty() would work in the controller
+==> DONE design the model
+==> DONE decide how to flow data around the system, ie: via DB
+==> DONE refactor login to user User, and get rid of inheritance
+==> DONE add super dm class for id
+==> poc with types
+    --> DONE LocalDateTime [writes fine]
+    --> DONE MaritalStatus
+             https://www.youtube.com/watch?v=RQRU9Ru7UWA
+             --> DONE research if there is a better way to display an enum...?
+             --> DONE select from a dropdown of possibilities
+    --> DONE writing complex objects: Person.name
+    --> DONE what about reading dates???? fine as is, they are fully bound
+    --> IN PROGRESS display list
+        https://www.youtube.com/watch?v=kttfBthzIPI
+==> DONE define and apply proper types        
+==> DONE fix overnight issues
+==> RESOLVED MAJOR ISSUE !!!!!!!!!!!!!!!!!!!: 
+            !!!!!!--> pom was never working as it is building for gs parent project!!!!
+            !!!!!!--> gradle not building the required dependencies
+    SOLUTION
+    --> DONE create a new app direct from spring boot website
+    --> DONE migrate everything across
+    --> get mockito and controller endpoint testing running
+    --> concise doc of practical spring MVC revision
+    --> DONE save a shell app 
+
+
+
+==> POC of critical features:
+    ==> DONE autowiring of properties at Service and DAO layers
+    ==> what exactly are spring form labels used for?
+    ==> unit tests poc
+        https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html
+        --> DONE dao
+        --> DONE service mocking
+                 http://www.springboottutorial.com/spring-boot-unit-testing-and-mocking-with-mockito-and-junit
+        --> controller
+            https://dzone.com/articles/unit-and-integration-tests-in-spring-boot
+
+
+
+        --> other logic (if any)
+    ==> DONE logging poc
+    ==> DONE properties file
+    ==> DONE internationalization poc
+             https://dzone.com/articles/unit-and-integration-tests-in-spring-boot-2
+             https://www.javadevjournal.com/spring-boot/spring-boot-internationalization/
+    ==> DONE application page
+    ==> DONE error jsp 
+
+
+
+
+
+==> IN PORGRESS show some artificial statements on the incident page to test displaying object lists in thyme
+==> IN PORGRESS create tmp storage mechanism
+==> tidy storage with singleton
+==> quick code tidy
+==> design direct page flow properly
+==> run and debug via eclipse
+
+
+
+
+
+
+    ==> jsp includes tag and page display structure
+    ==> use standalone css file & get rid of inline css
+    ==> add basic javascript file
+    ==> how to present dates nicely in jsps? I guess use Thyme label....
+    ==> handle session data
+------------------------
+
+==> look at form labels:
+    https://www.tutorialspoint.com/springmvc/springmvc_textarea.htm
+==> review whether it is better to have mapping on controller classes rather than headings
+==> brush up all pages with proper fields, bound to proper view components
+==> when errors are thrown on the page, the redirection must still load the page
+    eg. relevant enum field data must be readded
+==> complete server side validation
+==> should put jsps in a view directory, unless they are used repeatedly
+==> get rid of git elements, to make this a contained shell
+==> tidy method params in controllers
+==> add roles and views to login
+==> put to GIT
+==> add database and hibernate
+==> identify how to use session instead of page by page persistence
+==> initial page tidy with html tables
+==> apply proper html 5
+==> params in request mapping
+==> ultimately save to db, and provide daos
+==> css enabled 
+==> js enabled
+
+---------------------------------------------------------------------------------------
+
+EXAMPLES:  
+
+JavaMvcOnlyWorkspace/spring-mvc-java
+--> mass of code mixing java annotations and xml
+
+XWorkspace1/initial
+--> basic ground up annotation based, but WITH SPRING BOOT
+    ==> LESSONS:
+        - Tomcat is embedded, so don't try to run from local Tomcat
+        - notice templates are located within resources  
+        - notice explicit individual mapping for get and post requests
+
+Would it work without main class?
+
+XWorkspace1/post_initial
+--> a plain copy of initial
+    ==> copy initial, and import as a maven build
+    ==> in post_initial/build/libs
+        removed gs-handling-form-submission-0.1.0.jar 
+    ==> then build and run:
+        ./gradlew build
+        java -jar build/libs/gs-handling-form-submission-0.1.0.jar
+
+---------------------------------------------------------------------------------------
+RUNNING THE APP WITH GRADLE
+
+BUILD: ./gradlew build
+RUN:   java -jar build/libs/incident-report-app-0.1.0.jar
+
+OR BUILD AND RUN: ./gradlew bootRun
+---------------------------------------------------------------------------------------
+RUNNING THE APP WITH MVN
+
+BUILD: ./mvnw clean package
+RUN:   java -jar target/gs-handling-form-submission-0.1.0.jar
+        [This jar name is set with parameters in the maven script,
+        to be equal to the parent directory]
+
+        java -jar target/PostInitialProj-0.0.1-SNAPSHOT.jar
+
+OR BUILD AND RUN: ./mvnw spring-boot:run
+---------------------------------------------------------------------------------------
+
+List<FieldError> errList = errors.getFieldErrors();
+    		for (FieldError err : errList) {
+    			System.out.println("error: " +  err.getObjectName() + " --> " + err.getDefaultMessage());  
+    		}
+
+
+<div>
+           <label th:for="type">Incident Type</label>
+           <select th:field="*{type}">
+               <option th:each="incType : ${incTypeList}"
+                       th:text="${incType.lit}"
+                       th:value="${incType}"></option>
+	       </select>
+        </div>
+---------------------------------------------------------------------------------------
+
