@@ -1,3 +1,7 @@
+---------------------------------------------------------------------------------------
+SPRING MVC SHELL with thyme and spring boot
+---------------------------------------------------------------------------------------
+
 USEFUL LINKS:
 
 Spring MVC
@@ -27,5 +31,4 @@ RUN:   java -jar target/gs-handling-form-submission-0.1.0.jar
 
 OR BUILD AND RUN: ./mvnw spring-boot:run
 ---------------------------------------------------------------------------------------
-Further notes and advice:
 
