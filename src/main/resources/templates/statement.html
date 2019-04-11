@@ -16,7 +16,7 @@
     <p th:text="'Test model app property: ' + ${testModelMap}" />
     
 	<h2>Please enter your description (ie of one person) of the action:</h2>
-    <form action="#" th:action="@{/statement}" th:object="${statement}" method="post">
+    <form action="#" th:action="@{/entry/statement}" th:object="${statement}" method="post">
         
         <p>Statement Maker's First Name: <input type="text" th:field="*{author.firstName}" />
 		<!-- Apply block for each person here    -->

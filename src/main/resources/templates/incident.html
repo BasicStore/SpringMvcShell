@@ -20,7 +20,7 @@
     <p th:text="'Last Name ZZZZ: ' + ${incident.reporter.lastName}" />
     
     
-    <form action="#" th:action="@{/incident}" th:object="${incident}" method="post">
+    <form action="#" th:action="@{/entry/incident}" th:object="${incident}" method="post">
     	<p>Reporter First Name: <input type="text" th:field="*{reporter.firstName}" /> 
         
     	<div>

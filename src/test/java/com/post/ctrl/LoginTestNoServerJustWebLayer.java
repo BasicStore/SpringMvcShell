@@ -19,7 +19,7 @@ import com.post.serv.MyService;
 
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(LoginController.class) // this could be a different class from this class
+@WebMvcTest(LandingController.class) // this could be a different class from this class
 public class LoginTestNoServerJustWebLayer {  
 
 	@Autowired

@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.post.dm.Incident;
@@ -25,15 +26,16 @@ import com.post.serv.MyService;
 
 
 @Controller
-public class LoginController {
+@RequestMapping("/entry")
+public class LandingController {
 
 	@Autowired
 	private MyService myService;
 	
-	private Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private Logger logger = LoggerFactory.getLogger(LandingController.class);
 	
 	public void checkAutowiring() {
-		System.out.println("CHECKING AUTOWIRING for services and dao:  " + myService.checkAutowiring());
+		//System.out.println("CHECKING AUTOWIRING for services and dao:  " + myService.checkAutowiring());
 	}
 	
 	
@@ -44,7 +46,8 @@ public class LoginController {
 	}
     
 	
-	@GetMapping("/login")
+	@GetMapping("/landing")
+	//@GetMapping("/login")
     public String greetingForm(HttpServletRequest request, Model model) {
 		String currLocation = System.getProperty("user.dir");    	
 		logger.info("LOGGING FROM TOMCAT WITH SLF - and currentl location is ==> " + currLocation);
@@ -69,18 +72,24 @@ public class LoginController {
     	// testing accessing a configuration file which can be done from any java class
     	ResourceBundle rb = ResourceBundle.getBundle("config.sysprops");
     	String value = rb.getString("database.name");
+    	
+    	
+    	System.out.println("TEST CONFIG PROP VALUE HERE:  " + value);
     	logger.info("TEST CONFIG PROP VALUE HERE:  " + value);
     	
-        return "login";
+        //return "login";
+    	return "landing";
     }
 
 
     
-    @PostMapping("/login")
+    @PostMapping("/landing")
+	//@PostMapping("/login")
     public ModelAndView greetingSubmit(HttpServletRequest request, ModelMap model, @Valid @ModelAttribute User login, BindingResult errors) {
 
     	
-    	System.out.println("IN THE POST MAPPING");
+    	System.out.println("IN THE POST MAPPING____________");
+    	logger.info("IN THE POST MAPPINGZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
     	
     	// TODO:  not great, but use this whilst @NotNull is not working
     	if (errors.hasErrors() || pageHasBlankMandatoryFields(login)) {
@@ -92,6 +101,8 @@ public class LoginController {
     	model.addAttribute("mStatusList", MaritalStatus.values());
     	
     	Person author = getPersonFromDb(login);
+    	//Person author = new Person("MyFirstName", "MyLastname", "MyAddress");
+    	
     	ModelAndView mv = new ModelAndView("person");
     	mv.addObject("person", author);
     	return mv;

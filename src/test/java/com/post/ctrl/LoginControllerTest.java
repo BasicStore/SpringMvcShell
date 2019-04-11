@@ -12,7 +12,7 @@ public class LoginControllerTest {
 		
 	//@Test
 	public void testGreetingForm(Model model) {
-		LoginController loginCtrller = new LoginController();
+		LandingController loginCtrller = new LandingController();
 
 		// Incident Report App
 		

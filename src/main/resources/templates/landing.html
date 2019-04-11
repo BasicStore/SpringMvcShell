@@ -16,9 +16,9 @@
 <body>
 	<h1 th:text = "#{international.text}"></h1>
 
-    <p><h1><b>Shell App</b></h1></p>
-	<h2>Enter your login details:</h2>
-    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+    <p><h1><b>Shell App: LANDING PAGE!</b></h1></p>
+	<h2>Enter your login details: (omit this!!)</h2>
+    <form action="#" th:action="@{/entry/landing}" th:object="${user}" method="post">
         <p>Username: <input type="text" th:field="*{username}" />
             <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">First Name Error</span></p>
         <p>Password: <input type="text" th:field="*{pass}" />
