@@ -19,7 +19,7 @@
     <p th:text="'Last Name: ' + ${person.lastName}" />
     
     
-    <form action="#" th:action="@{/person}" th:object="${person}" method="post">
+    <form action="#" th:action="@{/entry/person}" th:object="${person}" method="post">
     	
     	<p>First Name: <input type="text" th:field="${person.firstName}" />
         <p>Last Name: <input type="text" th:field="${person.lastName}" />

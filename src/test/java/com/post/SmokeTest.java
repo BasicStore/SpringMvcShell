@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.post.ctrl.LoginController;
+import com.post.ctrl.LandingController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SmokeTest {
 
 	@Autowired
-    private LoginController loginController;
+    private LandingController loginController;
 	
 	@Autowired
-    private LoginController incidentController;
+    private LandingController incidentController;
 	
 	@Autowired
-    private LoginController personController;
+    private LandingController personController;
 	
 	@Autowired
-    private LoginController statementController;
+    private LandingController statementController;
 	
 
     @Test
